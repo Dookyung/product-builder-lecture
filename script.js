@@ -33,5 +33,26 @@ function generateLotto() {
     });
 }
 
-// 페이지 로드 시 첫 번호 자동 생성
-window.onload = generateLotto;
+// 테마(다크/화이트) 적용 및 토글 함수
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const btn = document.getElementById('theme-toggle');
+    if (btn) {
+        btn.innerText = theme === 'dark' ? '☀️ 라이트' : '🌙 다크';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+// 페이지 로드 시: 저장된 테마 적용 + 첫 번호 자동 생성
+window.onload = function () {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    generateLotto();
+};
