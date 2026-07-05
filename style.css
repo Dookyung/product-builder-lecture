@@ -1,0 +1,78 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 18px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+}
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+button {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    margin-bottom: 25px;
+}
+button:hover {
+    background-color: #3f37c9;
+}
+.lotto-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+.row-label {
+    font-weight: bold;
+    color: #6c757d;
+    font-size: 14px;
+    width: 40px;
+    text-align: left;
+}
+.ball-container {
+    display: flex;
+    gap: 8px;
+}
+.ball {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+}
+/* 로또 공식 색상 기준 적용 */
+.ball.range-1 { background: radial-gradient(circle at 30% 30%, #fbc531, #e1b12c); } /* 1~10 노랑 */
+.ball.range-2 { background: radial-gradient(circle at 30% 30%, #00a8ff, #0097e6); } /* 11~20 파랑 */
+.ball.range-3 { background: radial-gradient(circle at 30% 30%, #e84118, #c23616); } /* 21~30 빨강 */
+.ball.range-4 { background: radial-gradient(circle at 30% 30%, #718093, #353b48); } /* 31~40 회색 */
+.ball.range-5 { background: radial-gradient(circle at 30% 30%, #4cd137, #44bd32); } /* 41~45 녹색 */
