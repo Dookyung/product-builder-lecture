@@ -108,6 +108,13 @@ p {
 }
 .form-status.success { color: #44bd32; }
 .form-status.error { color: #e84118; }
+/* 댓글(Disqus) */
+.comments-container h2 {
+    margin-bottom: 20px;
+}
+#disqus_thread {
+    text-align: left;
+}
 .theme-toggle {
     position: absolute;
     top: 20px;
