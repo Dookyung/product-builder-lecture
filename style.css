@@ -24,10 +24,14 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     background-color: var(--bg);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding: 24px 0;
+    box-sizing: border-box;
+    gap: 20px;
     transition: background-color 0.3s;
 }
 .container {
@@ -46,9 +50,64 @@ h1 {
     margin-bottom: 25px;
     font-size: 24px;
 }
+h2 {
+    color: var(--text);
+    margin: 0 0 8px;
+    font-size: 20px;
+}
 p {
     color: var(--sub-text);
 }
+/* 제휴문의 폼 */
+.form-container {
+    text-align: left;
+}
+.form-container h2,
+.form-container > p {
+    text-align: center;
+}
+.form-container > p {
+    margin-bottom: 20px;
+}
+.field {
+    margin-bottom: 16px;
+}
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--sub-text);
+}
+.field input,
+.field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text);
+    background-color: var(--row-bg);
+    border: 1px solid var(--row-border);
+    border-radius: 8px;
+    transition: border 0.2s;
+}
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--btn-bg);
+}
+.field textarea {
+    resize: vertical;
+}
+.form-status {
+    text-align: center;
+    font-size: 14px;
+    margin: 12px 0 0;
+    min-height: 18px;
+}
+.form-status.success { color: #44bd32; }
+.form-status.error { color: #e84118; }
 .theme-toggle {
     position: absolute;
     top: 20px;

@@ -48,11 +48,48 @@ function toggleTheme() {
     applyTheme(current === 'dark' ? 'light' : 'dark');
 }
 
-// 페이지 로드 시: 저장된 테마 적용 + 첫 번호 자동 생성
+// 제휴문의 폼: 페이지 이동 없이 Formspree로 전송
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        status.className = 'form-status';
+        status.innerText = '전송 중...';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                form.reset();
+                status.className = 'form-status success';
+                status.innerText = '문의가 접수되었습니다. 감사합니다! 🙌';
+            } else {
+                const data = await response.json().catch(() => ({}));
+                const msg = data.errors ? data.errors.map(err => err.message).join(', ')
+                                        : '전송에 실패했습니다. 잠시 후 다시 시도해주세요.';
+                status.className = 'form-status error';
+                status.innerText = msg;
+            }
+        } catch (err) {
+            status.className = 'form-status error';
+            status.innerText = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
+        }
+    });
+}
+
+// 페이지 로드 시: 저장된 테마 적용 + 첫 번호 자동 생성 + 폼 연결
 window.onload = function () {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
     applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
     generateLotto();
+    setupContactForm();
 };
